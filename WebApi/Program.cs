@@ -1,5 +1,12 @@
 // создается билдер веб приложения
+
+using Dapper;
+using WebApi.DAL;
+
 var builder = WebApplication.CreateBuilder(args);
+
+DefaultTypeMap.MatchNamesWithUnderscores = true;
+builder.Services.AddScoped<UnitOfWork>();
 
 // зависимость, которая автоматически подхватывает все контроллеры в проекте
 builder.Services.AddControllers();
@@ -20,6 +27,8 @@ app.MapControllers();
 // по сути в этот момент будет происходить накатка миграций на базу
 Migrations.Program.Main(Array.Empty<string>());
 
+// код до вызова builder.Services.AddControllers():
+builder.Services.Configure<DbSettings>(builder.Configuration.GetSection(nameof(DbSettings)));
 
 // запускам приложение
 app.Run();
