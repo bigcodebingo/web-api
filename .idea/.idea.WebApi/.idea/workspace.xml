@@ -10,22 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eecdbe72-6150-4903-93c1-afbb52b78189" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Models/Dto/Common/OrderItemUnit.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Dto/Common/OrderUnit.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Dto/V1/Requests/V1CreateOrderRequest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Dto/V1/Requests/V1QueryOrdersRequest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Dto/V1/Responses/V1CreateOrderResponse.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Dto/V1/Responses/V1QueryOrdersResponse.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApi/BLL/Models/OrderItemUnit.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApi/BLL/Models/OrderUnit.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApi/BLL/Models/QueryOrderItemsModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApi/BLL/Services/OrderService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApi/Controllers/V1/OrderController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApi/Validators/V1CreateOrderRequestValidator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApi/Validators/V1QueryOrdersRequestValidator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApi/Validators/ValidatorFactory.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.WebApi/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebApi/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Migrations/MigratorRunner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Migrations/MigratorRunner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApi/Controllers/V1/OrderController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Controllers/V1/OrderController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebApi/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Properties/launchSettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/WebApi.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/WebApi.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +50,9 @@
     <setting file="file://$PROJECT_DIR$/WebApi/DAL/Repositories/OrderItemRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApi/DAL/Repositories/OrderRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApi/DAL/UnitOfWork.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApi/Validators/V1CreateOrderRequestValidator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApi/Validators/V1QueryOrdersRequestValidator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApi/Validators/ValidatorFactory.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -155,7 +148,7 @@
       <updated>1760057745765</updated>
       <workItem from="1760057746344" duration="2692000" />
       <workItem from="1760063315857" duration="1860000" />
-      <workItem from="1760138985690" duration="6895000" />
+      <workItem from="1760138985690" duration="8529000" />
     </task>
     <servers />
   </component>

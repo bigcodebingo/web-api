@@ -4,13 +4,20 @@ using Models.Dto.V1.Requests;
 using Models.Dto.V1.Responses;
 using WebApi.BLL.Models;
 using WebApi.BLL.Services;
+using WebApi.Validators;
 
 [Route("api/v1/order")]
-public class OrderController(OrderService orderService): ControllerBase
+public class OrderController(OrderService orderService, ValidatorFactory validatorFactory): ControllerBase
 {
     [HttpPost("batch-create")]
     public async Task<ActionResult<V1CreateOrderResponse>> V1BatchCreate([FromBody] V1CreateOrderRequest request, CancellationToken token)
     {
+        var validationResult = await validatorFactory.GetValidator<V1CreateOrderRequest>().ValidateAsync(request, token);
+        if (!validationResult.IsValid)
+        {
+            return BadRequest(validationResult.ToDictionary());
+        }
+        
         var res = await orderService.BatchInsert(request.Orders.Select(x => new OrderUnit
         {
             CustomerId = x.CustomerId,
@@ -38,6 +45,12 @@ public class OrderController(OrderService orderService): ControllerBase
     [HttpPost("query")]
     public async Task<ActionResult<V1QueryOrdersResponse>> V1QueryOrders([FromBody] V1QueryOrdersRequest request, CancellationToken token)
     {
+        var validationResult = await validatorFactory.GetValidator<V1QueryOrdersRequest>().ValidateAsync(request, token);
+        if (!validationResult.IsValid)
+        {
+            return BadRequest(validationResult.ToDictionary());
+        }
+        
         var res = await orderService.GetOrders(new QueryOrderItemsModel
         {
             Ids = request.Ids,
