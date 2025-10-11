@@ -1,13 +1,20 @@
 // создается билдер веб приложения
 
 using Dapper;
+using WebApi.BLL.Services;
 using WebApi.DAL;
+using WebApi.DAL.Interfaces;
+using WebApi.DAL.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 DefaultTypeMap.MatchNamesWithUnderscores = true;
 builder.Services.AddScoped<UnitOfWork>();
 
+builder.Services.Configure<DbSettings>(builder.Configuration.GetSection(nameof(DbSettings)));
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+builder.Services.AddScoped<IOrderItemRepository, OrderItemRepository>();
+builder.Services.AddScoped<OrderService>();
 // зависимость, которая автоматически подхватывает все контроллеры в проекте
 builder.Services.AddControllers();
 // добавляем swagger
@@ -25,10 +32,7 @@ app.MapControllers();
 
 // вместо *** должен быть путь к проекту Migrations
 // по сути в этот момент будет происходить накатка миграций на базу
-Migrations.Program.Main(Array.Empty<string>());
-
-// код до вызова builder.Services.AddControllers():
-builder.Services.Configure<DbSettings>(builder.Configuration.GetSection(nameof(DbSettings)));
+Migrations.Program.Main([]); 
 
 // запускам приложение
 app.Run();

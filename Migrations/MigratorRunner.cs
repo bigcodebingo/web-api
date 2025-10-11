@@ -3,6 +3,8 @@ using FluentMigrator.Runner.VersionTableInfo;
 using Microsoft.Extensions.DependencyInjection;
 using Npgsql;
 
+namespace Migrations;
+
 public class MigratorRunner(string connectionString)
 {
     public void Migrate()

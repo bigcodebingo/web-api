@@ -10,18 +10,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eecdbe72-6150-4903-93c1-afbb52b78189" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/WebApi/DAL/DbSettings.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApi/DAL/Interfaces/IOrderItemRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApi/DAL/Interfaces/IOrderRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApi/DAL/Models/QueryOrderItemsDalModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApi/DAL/Models/QueryOrdersDalModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApi/DAL/Models/V1OrderDal.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApi/DAL/Models/V1OrderItemDal.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApi/DAL/Repositories/OrderItemRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApi/DAL/Repositories/OrderRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApi/DAL/UnitOfWork.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/Dto/Common/OrderItemUnit.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/Dto/Common/OrderUnit.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/Dto/V1/Requests/V1CreateOrderRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/Dto/V1/Requests/V1QueryOrdersRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/Dto/V1/Responses/V1CreateOrderResponse.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/Dto/V1/Responses/V1QueryOrdersResponse.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApi/BLL/Models/OrderItemUnit.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApi/BLL/Models/OrderUnit.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApi/BLL/Models/QueryOrderItemsModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApi/BLL/Services/OrderService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApi/Controllers/V1/OrderController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.WebApi/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebApi/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Migrations/MigratorRunner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Migrations/MigratorRunner.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebApi/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApi/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Properties/launchSettings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebApi/WebApi.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/WebApi.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -37,6 +40,17 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Migrations/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Models/Dto/Common/OrderItemUnit.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Models/Dto/Common/OrderUnit.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Models/Dto/V1/Requests/V1CreateOrderRequest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Models/Dto/V1/Requests/V1QueryOrdersRequest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Models/Dto/V1/Responses/V1CreateOrderResponse.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Models/Dto/V1/Responses/V1QueryOrdersResponse.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApi/BLL/Models/OrderItemUnit.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApi/BLL/Models/OrderUnit.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApi/BLL/Models/QueryOrderItemsModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApi/BLL/Services/OrderService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApi/Controllers/V1/OrderController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApi/DAL/Interfaces/IOrderItemRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApi/DAL/Interfaces/IOrderRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApi/DAL/Models/QueryOrderItemsDalModel.cs" root0="FORCE_HIGHLIGHTING" />
@@ -52,6 +66,9 @@
   &quot;associatedIndex&quot;: 3
 }</component>
   <component name="ProjectId" id="33qw7bl32RcuTo8WaFMXL8N7OWt" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -138,7 +155,7 @@
       <updated>1760057745765</updated>
       <workItem from="1760057746344" duration="2692000" />
       <workItem from="1760063315857" duration="1860000" />
-      <workItem from="1760138985690" duration="2740000" />
+      <workItem from="1760138985690" duration="6895000" />
     </task>
     <servers />
   </component>
