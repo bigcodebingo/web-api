@@ -39,12 +39,9 @@ public class OrderRepository(UnitOfWork unitOfWork) : IOrderRepository
                 updated_at;
         ";
 
-        // из unitOfWork получаем соединение
+       
         var conn = await unitOfWork.GetConnection(token);
-        // выполняем запрос на query, потому что после 
-        // bulk-insert-a мы захотели returning заинсерченных строк.
-        // new {Orders = model} - это динамический тип данных
-        // Dapper просто возьмет название поля и заменит в sql-запросе @Orders на наши модели
+        
         var res = await conn.QueryAsync<V1OrderDal>(new CommandDefinition(
             sql, new {Orders = model}, cancellationToken: token));
         
@@ -68,12 +65,11 @@ public class OrderRepository(UnitOfWork unitOfWork) : IOrderRepository
         // тот же динамический тип данных 
         var param = new DynamicParameters();
         
-        // собираем условия для where
         var conditions = new List<string>();
 
         if (model.Ids?.Length > 0)
         {
-            // добавляем в динамический тип данные по айдишкам
+            
             param.Add("Ids", model.Ids);
             conditions.Add("id = ANY(@Ids)");
         }

@@ -10,12 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eecdbe72-6150-4903-93c1-afbb52b78189" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/WebApi/Validators/V1CreateOrderRequestValidator.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApi/Validators/V1QueryOrdersRequestValidator.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApi/Validators/ValidatorFactory.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.WebApi/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebApi/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/Controllers/V1/OrderController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Controllers/V1/OrderController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApi/DAL/Repositories/OrderRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/DAL/Repositories/OrderRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApi/Validators/V1QueryOrdersRequestValidator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Validators/V1QueryOrdersRequestValidator.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +26,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7fa409238b86f90757c9aebf45cf85e36c6b7f2bb773dc1b52a35c2bf4/MigrationRunner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Migrations/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Models/Dto/Common/OrderItemUnit.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Models/Dto/Common/OrderUnit.cs" root0="FORCE_HIGHLIGHTING" />
@@ -149,6 +147,13 @@
       <workItem from="1760057746344" duration="2692000" />
       <workItem from="1760063315857" duration="1860000" />
       <workItem from="1760138985690" duration="8529000" />
+      <workItem from="1760154766626" duration="662000" />
+      <workItem from="1760164807850" duration="808000" />
+      <workItem from="1763765365586" duration="135000" />
+      <workItem from="1763765640470" duration="11796000" />
+      <workItem from="1763783467917" duration="152000" />
+      <workItem from="1763793643369" duration="3500000" />
+      <workItem from="1763799843112" duration="2111000" />
     </task>
     <servers />
   </component>

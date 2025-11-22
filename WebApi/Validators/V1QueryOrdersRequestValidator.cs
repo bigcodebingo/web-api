@@ -8,6 +8,12 @@ public class V1QueryOrdersRequestValidator : AbstractValidator<V1QueryOrdersRequ
 {
     public V1QueryOrdersRequestValidator()
     {
+        RuleFor(x => x)
+            .Must(x => (x.Ids != null && x.Ids.Length > 0) || (x.CustomerIds != null && x.CustomerIds.Length > 0));
+            
+        /*RuleFor(x => x.Ids)
+            .NotEmpty();*/
+        
         // Если переданы Ids — они должны быть положительными
         RuleForEach(x => x.Ids)
             .GreaterThan(0)
