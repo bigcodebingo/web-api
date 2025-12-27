@@ -6,6 +6,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Migrations", "Migrations\Migrations.csproj", "{49C305D3-B2D2-44EE-BA5B-A97E7AA6215B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{53C3F5D9-7931-4156-B1A7-ECDA6EF3522C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Messages", "Messages\Messages.csproj", "{EC1AB965-64FE-4141-8057-2EA21704D13E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +28,13 @@ Global
 		{49C305D3-B2D2-44EE-BA5B-A97E7AA6215B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49C305D3-B2D2-44EE-BA5B-A97E7AA6215B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49C305D3-B2D2-44EE-BA5B-A97E7AA6215B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53C3F5D9-7931-4156-B1A7-ECDA6EF3522C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53C3F5D9-7931-4156-B1A7-ECDA6EF3522C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53C3F5D9-7931-4156-B1A7-ECDA6EF3522C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53C3F5D9-7931-4156-B1A7-ECDA6EF3522C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC1AB965-64FE-4141-8057-2EA21704D13E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC1AB965-64FE-4141-8057-2EA21704D13E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC1AB965-64FE-4141-8057-2EA21704D13E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC1AB965-64FE-4141-8057-2EA21704D13E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

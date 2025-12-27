@@ -1,11 +1,19 @@
+using Messages;
+using Microsoft.Extensions.Options;
 using WebApi.BLL.Models;
+using WebApi.Config;
 using WebApi.DAL;
 using WebApi.DAL.Interfaces;
 using WebApi.DAL.Models;
 
 namespace WebApi.BLL.Services;
 
-public class OrderService(UnitOfWork unitOfWork, IOrderRepository orderRepository, IOrderItemRepository orderItemRepository)
+public class OrderService(
+    UnitOfWork unitOfWork, 
+    IOrderRepository orderRepository, 
+    IOrderItemRepository orderItemRepository,
+    RabbitMqService rabbitMqService,
+    IOptions<RabbitMqSettings> settings)
 {
     /// <summary>
     /// Метод создания заказов
@@ -52,6 +60,33 @@ public class OrderService(UnitOfWork unitOfWork, IOrderRepository orderRepositor
             }
 
             await transaction.CommitAsync(token);
+
+// Публикация событий в RabbitMQ
+            var messages = Map(insertedOrders).Select(order => new OrderCreatedMessage
+            {
+                Id = order.Id,
+                CustomerId = order.CustomerId,
+                DeliveryAddress = order.DeliveryAddress,
+                TotalPriceCents = order.TotalPriceCents,
+                TotalPriceCurrency = order.TotalPriceCurrency,
+                CreatedAt = order.CreatedAt,
+                UpdatedAt = order.UpdatedAt,
+                OrderItems = order.OrderItems.Select(item => new OrderItemCreatedMessage
+                {
+                    Id = item.Id,
+                    OrderId = item.OrderId,
+                    ProductId = item.ProductId,
+                    Quantity = item.Quantity,
+                    ProductTitle = item.ProductTitle,
+                    ProductUrl = item.ProductUrl,
+                    PriceCents = item.PriceCents,
+                    PriceCurrency = item.PriceCurrency,
+                    CreatedAt = item.CreatedAt,
+                    UpdatedAt = item.UpdatedAt
+                }).ToArray()
+            }).ToArray();
+
+            await rabbitMqService.Publish(messages, settings.Value.OrderCreatedQueue, token);
 
             return Map(insertedOrders);
         }

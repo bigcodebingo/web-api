@@ -1,8 +1,10 @@
 // создается билдер веб приложения
 
+using System.Text.Json;
 using Dapper;
 using FluentValidation;
 using WebApi.BLL.Services;
+using WebApi.Config;
 using WebApi.DAL;
 using WebApi.DAL.Interfaces;
 using WebApi.DAL.Repositories;
@@ -14,13 +16,20 @@ DefaultTypeMap.MatchNamesWithUnderscores = true;
 builder.Services.AddScoped<UnitOfWork>();
 
 builder.Services.Configure<DbSettings>(builder.Configuration.GetSection(nameof(DbSettings)));
+builder.Services.Configure<RabbitMqSettings>(builder.Configuration.GetSection(nameof(RabbitMqSettings)));builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IOrderItemRepository, OrderItemRepository>();
+builder.Services.AddScoped<IAuditLogOrderRepository, AuditLogOrderRepository>();
 builder.Services.AddScoped<OrderService>();
+builder.Services.AddScoped<RabbitMqService>();
+builder.Services.AddScoped<AuditLogOrderService>();
 builder.Services.AddValidatorsFromAssemblyContaining(typeof(Program));
 builder.Services.AddScoped<ValidatorFactory>();
 // зависимость, которая автоматически подхватывает все контроллеры в проекте
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(options => 
+{
+    options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower;
+});
 // добавляем swagger
 builder.Services.AddSwaggerGen();
 
