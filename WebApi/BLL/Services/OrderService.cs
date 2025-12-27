@@ -57,38 +57,61 @@ public class OrderService(
             if (allOrderItems.Length > 0)
             {
                 var insertedItems = await orderItemRepository.BulkInsert(allOrderItems, token);
-            }
-
-            await transaction.CommitAsync(token);
-
-// Публикация событий в RabbitMQ
-            var messages = Map(insertedOrders).Select(order => new OrderCreatedMessage
-            {
-                Id = order.Id,
-                CustomerId = order.CustomerId,
-                DeliveryAddress = order.DeliveryAddress,
-                TotalPriceCents = order.TotalPriceCents,
-                TotalPriceCurrency = order.TotalPriceCurrency,
-                CreatedAt = order.CreatedAt,
-                UpdatedAt = order.UpdatedAt,
-                OrderItems = order.OrderItems.Select(item => new OrderItemCreatedMessage
+                await transaction.CommitAsync(token);
+                
+                // Создаем lookup для OrderItems
+                var orderItemLookup = insertedItems.ToLookup(x => x.OrderId);
+                
+                // Публикация событий в RabbitMQ с правильными OrderItems
+                var messages = insertedOrders.Select(order => new OrderCreatedMessage
                 {
-                    Id = item.Id,
-                    OrderId = item.OrderId,
-                    ProductId = item.ProductId,
-                    Quantity = item.Quantity,
-                    ProductTitle = item.ProductTitle,
-                    ProductUrl = item.ProductUrl,
-                    PriceCents = item.PriceCents,
-                    PriceCurrency = item.PriceCurrency,
-                    CreatedAt = item.CreatedAt,
-                    UpdatedAt = item.UpdatedAt
-                }).ToArray()
-            }).ToArray();
+                    Id = order.Id,
+                    CustomerId = order.CustomerId,
+                    DeliveryAddress = order.DeliveryAddress,
+                    TotalPriceCents = order.TotalPriceCents,
+                    TotalPriceCurrency = order.TotalPriceCurrency,
+                    CreatedAt = order.CreatedAt,
+                    UpdatedAt = order.UpdatedAt,
+                    OrderItems = orderItemLookup[order.Id].Select(item => new OrderItemCreatedMessage
+                    {
+                        Id = item.Id,
+                        OrderId = item.OrderId,
+                        ProductId = item.ProductId,
+                        Quantity = item.Quantity,
+                        ProductTitle = item.ProductTitle,
+                        ProductUrl = item.ProductUrl,
+                        PriceCents = item.PriceCents,
+                        PriceCurrency = item.PriceCurrency,
+                        CreatedAt = item.CreatedAt,
+                        UpdatedAt = item.UpdatedAt
+                    }).ToArray()
+                }).ToArray();
 
-            await rabbitMqService.Publish(messages, settings.Value.OrderCreatedQueue, token);
+                await rabbitMqService.Publish(messages, settings.Value.OrderCreatedQueue, token);
 
-            return Map(insertedOrders);
+                return Map(insertedOrders, orderItemLookup);
+            }
+            else
+            {
+                await transaction.CommitAsync(token);
+                
+                // Публикация без OrderItems
+                var messages = insertedOrders.Select(order => new OrderCreatedMessage
+                {
+                    Id = order.Id,
+                    CustomerId = order.CustomerId,
+                    DeliveryAddress = order.DeliveryAddress,
+                    TotalPriceCents = order.TotalPriceCents,
+                    TotalPriceCurrency = order.TotalPriceCurrency,
+                    CreatedAt = order.CreatedAt,
+                    UpdatedAt = order.UpdatedAt,
+                    OrderItems = Array.Empty<OrderItemCreatedMessage>()
+                }).ToArray();
+
+                await rabbitMqService.Publish(messages, settings.Value.OrderCreatedQueue, token);
+
+                return Map(insertedOrders);
+            }
         }
         catch
         {
